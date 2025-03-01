@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <RootNamespace>LonesArenaRadar</RootNamespace>
+    <Nullable>warnings</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Platforms>x64</Platforms>
+    <Configurations>Debug;Release</Configurations>
+	<ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<ApplicationIcon>..\Resources\lone-icon.ico</ApplicationIcon>
+	<ServerGarbageCollection>true</ServerGarbageCollection>
+	<ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+	<RetainVMGarbageCollection>true</RetainVMGarbageCollection>
+  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(Configuration)' != 'Commercial'">
+		<Content Include="..\leechcore_driver.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\dbghelp.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\FTD3XX.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\leechcore.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\Resources\Maps.bin">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\symsrv.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\vcruntime140.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\vmm.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\tinylz4.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DarkModeForms.imerzan" Version="1.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.0" />
+		<PackageReference Include="SkiaSharp.Views.WindowsForms" Version="2.88.9" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\eft-dma-shared\eft-dma-shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="VmmFrost">
+	    <HintPath>..\VmmFrost.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+</Project>
